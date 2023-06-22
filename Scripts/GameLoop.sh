@@ -8,6 +8,7 @@ function playGame() {
   input=""
   win=false
   correctArray=()  # Define the correctArray as an empty array
+  guesses=0
 
     declare -a a   # define array a
 for ((i=0; i<${#random_word}; i++)); 
@@ -20,6 +21,7 @@ done
   do
     echo "What word would you like to try"
     read input
+    guesses=$((guesses+1))
 
 
 echo $random_word
@@ -44,12 +46,14 @@ fi
 if [[ $(echo ${correctArray[@]} | fgrep -w "_") ]]
 then
   # does contain _
+  echo 
 else
   # doesnt contain _
   win=true
 fi
 
 done
+  echo "Guesses" $guesses
   echo "Congratulations! You won!"
 }
 
