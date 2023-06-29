@@ -28,7 +28,6 @@ function playGame() {
       echo "What letter would you like to try?"
       read input
       guesses=$((guesses+1))
-      echo $random_word
 
       for ((i=0; i<${#random_word}; i++)); do
       #if 1.1
