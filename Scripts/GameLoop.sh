@@ -5,6 +5,7 @@ function playGame() {
   replay=true
   streak=0
 
+#While Schleife 1.1
   while [[ $replay == true ]]
   do
     random_word=$(getWord)
@@ -14,6 +15,8 @@ function playGame() {
     errors=0
 
     declare -a a
+
+    #for Schleife 1.1
     for ((i=0; i<${#random_word}; i++)); do
       a[$i]="${random_word:$i:1}"
       correctArray[$i]="_"
@@ -28,6 +31,7 @@ function playGame() {
       echo $random_word
 
       for ((i=0; i<${#random_word}; i++)); do
+      #if 1.1
         if [[ "${a[$i]}" == "$input" ]]; then
           correctArray[$i]="$input"
           echo "$input is correct"
@@ -55,6 +59,8 @@ function playGame() {
         errors=$((errors+1))
 
         echo "the input was wrong"
+        #Dateien 1,3
+        #TextProcessing  1.5
         cat "./Hangman-$errors"
         echo ""
         if [[ "$errors" -ge 10 ]]; then
@@ -84,15 +90,19 @@ function playGame() {
   current_date=$(date +%Y-%m-%d)
   current_time=$(date +%H:%M:%S)
 
-  # DU bruachen
+  #Du bruachen 1.4
 
-
+  du -d1 -h ./Score	
+  #Dateien 1,3
   echo "$M122UserName: Winstreak of $streak" >> ./Score/$M122UserName.skill
   echo "Date: $current_date Time: $current_time" >> ./Score/$M122UserName.skill
 }
 
+  #Funktionen bruachen 1.6
+
 function getWord() {
   FILE="./Files/Words.txt"
+  #TextProcessing  1.5
   awk 'BEGIN{srand();} {a[NR]=$0} END{print a[int(rand()*NR)+1]}' "$FILE"
 }
 
