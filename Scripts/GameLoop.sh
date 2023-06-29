@@ -13,6 +13,7 @@ function playGame() {
     correctArray=()
     guesses=0
     errors=0
+    index=0
 
     declare -a a
 
@@ -20,8 +21,9 @@ function playGame() {
     for ((i=0; i<${#random_word}; i++)); do
       a[$i]="${random_word:$i:1}"
       correctArray[$i]="_"
+    index=$((index + 1))
     done
-
+    echo "The word has $index letters"
     while [[ $win != true ]]
     do
       cor=false
@@ -39,7 +41,7 @@ function playGame() {
       done
 
       # Print the correctArray
-      echo "correctArray: ${correctArray[@]}"
+      echo "Correct Letters: ${correctArray[@]}"
 
       if [[ "$input" == "$random_word" ]]; then
         cor=true
